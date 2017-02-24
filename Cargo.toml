@@ -1,0 +1,6 @@
+[package]
+name = "libuuid"
+version = "0.1.0"
+authors = ["Rémi Duraffort <ivoire@videolan.org>"]
+
+[dependencies]
