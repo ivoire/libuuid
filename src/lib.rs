@@ -2,7 +2,7 @@ struct UUID {
     data: [u8; 16],
 }
 
-// TODO: implement the right Trait for comparison
+#[derive(PartialEq)]
 enum Types {
     Null,     // Empty UUID
     Time,     // UUIDv1
@@ -51,29 +51,20 @@ mod tests {
     fn new_null_uuid() {
         let uuid = UUID::new(Types::Null);
         assert!(uuid.data == [0; 16]);
-        match uuid.get_type() {
-            Types::Null => { assert!(true) }
-            _ => { assert!(false) }
-        }
+        assert!(uuid.get_type() == Types::Null);
     }
 
     #[test]
     fn new_time_uuid() {
         let uuid = UUID::new(Types::Time);
         assert!(uuid.data != [0; 16]);
-        match uuid.get_type() {
-            Types::Time => { assert!(true) }
-            _ => { assert!(false) }
-        }
+        assert!(uuid.get_type() == Types::Time);
     }
 
     #[test]
     fn new_random_uuid() {
         let uuid = UUID::new(Types::Random);
         assert!(uuid.data != [0; 16]);
-        match uuid.get_type() {
-            Types::Random => { assert!(true) }
-            _ => { assert!(false) }
-        }
+        assert!(uuid.get_type() == Types::Random);
     }
 }
